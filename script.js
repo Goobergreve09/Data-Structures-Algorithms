@@ -202,7 +202,9 @@ function dodge() {
   text.innerText = "You dodge the attack from the " + monsters[fighting].name + ".";
 }
 
-function lose() {}
+function lose() {
+  update(locations[5]);
+}
 
 function defeatMonster() {
   gold += Math.floor(monsters[fighting].level * 6.7);
@@ -230,3 +232,17 @@ function update(location) {
 button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
+
+function restart () {
+  xp = 0;
+  health = 100;
+  gold= 50;
+  currentWeapon = 0;
+  inventory = ["stick"];
+
+  goldText.innerText = gold;
+  xpText.innerText = xp;
+  healthText.innerText = health;
+
+  goTown();
+}
