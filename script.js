@@ -91,6 +91,12 @@ const locations = [
     text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.',
     "button text": ["Go to town square", "Go to town square", "Go to town square"],
     "button functions": [goTown, goTown, goTown]
+  },
+  {
+    name: "lose",
+    text: "You die. &#x2620;",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart]
   }
 ];
 
@@ -194,6 +200,10 @@ function attack() {
   if (health <= 0) {
     lose();
   } else if (monsterHealth <= 0) {
+   if (fighting === 2) {
+    winGame();
+   }
+  } else {
     defeatMonster();
   }
 }
@@ -204,6 +214,10 @@ function dodge() {
 
 function lose() {
   update(locations[5]);
+}
+
+function winGame () {
+  update(locations[6]);
 }
 
 function defeatMonster() {
@@ -222,7 +236,7 @@ function update(location) {
   button2.innerText = location["button text"][1];
   button3.innerText = location["button text"][2];
 
-  text.innerText = location.text;
+  text.innerHTML = location.text;
 
   button1.onclick = location["button functions"][0];
   button2.onclick = location["button functions"][1];
