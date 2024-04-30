@@ -89,14 +89,24 @@ const locations = [
   {
     name: "kill monster",
     text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.',
-    "button text": ["Go to town square", "Go to town square", "Go to town square"],
-    "button functions": [goTown, goTown, goTown]
+    "button text": [
+      "Go to town square",
+      "Go to town square",
+      "Go to town square",
+    ],
+    "button functions": [goTown, goTown, goTown],
   },
   {
     name: "lose",
     text: "You die. &#x2620;",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
-    "button functions": [restart, restart, restart]
+    "button functions": [restart, restart, restart],
+  },
+  {
+    name: "win",
+    text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart],
   }
 ];
 
@@ -190,7 +200,7 @@ function attack() {
   text.innerText +=
     " You attack it with your " + weapons[currentWeapon].name + ".";
 
-  health -= monsters[fighting].level;
+  health -= getMonsterAttackValue(monsters[fighting].level);
   monsterHealth -=
     weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
 
@@ -200,23 +210,28 @@ function attack() {
   if (health <= 0) {
     lose();
   } else if (monsterHealth <= 0) {
-   if (fighting === 2) {
-    winGame();
-   }
+    if (fighting === 2) {
+      winGame();
+    }
   } else {
     defeatMonster();
   }
 }
 
+function getMonsterAttackValue (level) {
+
+}
+
 function dodge() {
-  text.innerText = "You dodge the attack from the " + monsters[fighting].name + ".";
+  text.innerText =
+    "You dodge the attack from the " + monsters[fighting].name + ".";
 }
 
 function lose() {
   update(locations[5]);
 }
 
-function winGame () {
+function winGame() {
   update(locations[6]);
 }
 
@@ -231,7 +246,7 @@ function defeatMonster() {
 }
 
 function update(location) {
-  monsterStats.style.display = 'none';
+  monsterStats.style.display = "none";
   button1.innerText = location["button text"][0];
   button2.innerText = location["button text"][1];
   button3.innerText = location["button text"][2];
@@ -247,10 +262,10 @@ button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
 
-function restart () {
+function restart() {
   xp = 0;
   health = 100;
-  gold= 50;
+  gold = 50;
   currentWeapon = 0;
   inventory = ["stick"];
 
