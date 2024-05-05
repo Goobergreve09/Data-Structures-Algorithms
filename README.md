@@ -24,7 +24,7 @@ In order to play this game and give it a shot click the "Play Game" link below. 
 ![dragon](https://github.com/Goobergreve09/Data-Structures-Algorithms/assets/143923830/b5cfe65e-0fdd-46dd-b40f-a477a3ddc487)
 
 
-[Play Game](www.google.com)
+[Play Game](https://goobergreve09.github.io/Data-Structures-Algorithms/)
 
 ## Contributions
 
