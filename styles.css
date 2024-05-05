@@ -1,30 +1,36 @@
 body {
-  background-color: #0a0a23;
+  background-image: url(https://getwallpapers.com/wallpaper/full/6/b/e/1046436-widescreen-medieval-knights-wallpaper-1920x1080-for-ipad-pro.jpg)
 }
 
 #text {
-  background-color: #0a0a23;
-  color: #ffffff;
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  color: black;
   padding: 10px;
+  font-size: large;
 }
 
 #game {
   max-width: 500px;
   max-height: 400px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.5);
   color: #ffffff;
   margin-top: 30px;
   margin-bottom: 0px;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  
 }
 
 #controls,
 #stats {
   border: 1px solid #0a0a23;
-  color: #0a0a23;
+  color: white;
   padding: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 #monsterStats {
@@ -46,8 +52,26 @@ button {
   background-image: linear-gradient(#fecc4c, #ffac33);
   border: 3px solid #feac32;
   transition: .3s ease;
+  font-size: large;
+
 }
 
 button:hover {
 border: 3px solid black;
 }
+
+#imageContainer {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 600px; /* Set height to 100% of viewport height */
+  padding-top: 25px;
+}
+
+#locationImage {
+  max-width: 100%; /* Ensure the image doesn't exceed the viewport width */
+  max-height: 100%; /* Ensure the image doesn't exceed the viewport height */
+  border: 3px solid white;
+}
+
+

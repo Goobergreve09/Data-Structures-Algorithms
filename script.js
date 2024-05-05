@@ -60,6 +60,7 @@ const locations = [
   {
     name: "town square",
     text: 'You are in the town square. You see a sign that says "Store".',
+    image: "assets/images/TownSquare.jpeg",
     "button text": ["Go to store", "Go to cave", "Fight dragon"],
     "button functions": [goStore, goCave, fightDragon],
   },
@@ -67,6 +68,7 @@ const locations = [
   {
     name: "store",
     text: "You enter the store.",
+    image: "assets/images/Store.jpeg",
     "button text": [
       "Buy 10 health (10 gold)",
       "Buy weapon (30 gold)",
@@ -77,18 +79,20 @@ const locations = [
   {
     name: "cave",
     text: "You enter the cave. You see some monsters.",
+    image: "assets/images/enterCave.jpeg",
     "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
     "button functions": [fightSlime, fightBeast, goTown],
   },
   {
     name: "fight",
-    text: "You are fighting a monster.",
+    text: "You are fighting a " ,
     "button text": ["Attack", "Dodge", "Run"],
     "button functions": [attack, dodge, goTown],
   },
   {
     name: "kill monster",
     text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.',
+    image: "",
     "button text": [
       "Go to town square",
       "Go to town square",
@@ -99,18 +103,21 @@ const locations = [
   {
     name: "lose",
     text: "You die. &#x2620;",
+    image: "assets/images/youLose.jpeg",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
   },
   {
     name: "win",
     text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;",
+    image: "assets/images/YouWin.jpeg",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
   },
   {
     name: "easter egg",
     text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!",
+    image: "assets/images/easterEgg.jpeg",
     "button text": ["2", "8", "Go to town square?"],
     "button functions": [pickTwo, pickEight, goTown],
   },
@@ -138,6 +145,24 @@ function goFight() {
 
   monsterName.innerText = monsters[fighting].name;
   monsterHealthText.innerText = monsterHealth;
+
+  const fightImage = document.querySelector("#locationImage");
+
+  switch (monsters[fighting].name) {
+    case "slime":
+      fightImage.src = "assets/images/slimeMonster.jpeg";
+      break;
+    case "fanged beast":
+      fightImage.src = "assets/images/fangedBeast.jpeg";
+      break;
+    case "dragon":
+      fightImage.src = "assets/images/fightDragon.jpeg";
+      break;
+    // Add more cases for other monsters as needed
+    default:
+      // Set a default image or clear the image if no specific image is available
+      fightImage.src = "";
+  }
 }
 
 function buyHealth() {
@@ -176,16 +201,22 @@ function buyWeapon() {
 function fightSlime() {
   fighting = 0;
   goFight();
+
+  text.innerText += " " + monsters[fighting].name + " monster." ;
 }
 
 function fightBeast() {
   fighting = 1;
   goFight();
+
+  text.innerText += " " + monsters[fighting].name;
 }
 
 function fightDragon() {
   fighting = 2;
   goFight();
+
+  text.innerText += " " + monsters[fighting].name + " that has been tormenting the town. The towns people anxiously await your arrival.";
 }
 
 function sellWeapon() {
@@ -274,6 +305,24 @@ function update(location) {
 
   text.innerHTML = location.text;
 
+  const locationImage = document.querySelector("#locationImage");
+  locationImage.src = location.image || "assets/images/Begin.jpeg";
+
+  if (location.name === "kill monster") {
+    switch (monsterName.innerText) {
+      case "slime":
+        locationImage.src = "assets/images/deadSlime.jpeg";
+        break;
+      case "fanged beast":
+        locationImage.src = "assets/images/deadBeast.jpeg";
+        break;
+      // Add more cases for other monsters as needed
+      default:
+        // Set a default image or clear the image if no specific image is available
+        locationImage.src = "";
+    }
+  }
+
   button1.onclick = location["button functions"][0];
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
@@ -335,3 +384,13 @@ function pickTwo() {
 function pickEight() {
   pick(8);
 }
+
+imagesArray = [
+  "assets\images\enterCave.jpeg",
+  "assets\images\fangedBeast.jpeg",
+  "assets\images\fightDragon.jpeg",
+  "assets\images\slimeMonster.jpeg",
+  "assets\images\Store.jpeg",
+  "assets\images\TownSquare.jpeg",
+
+]
