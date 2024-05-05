@@ -76,7 +76,7 @@ border: 3px solid black;
 
 @media screen and (max-width: 450px) {
   #imageContainer {
-    padding-top: 25px; /* Adjust padding for smaller screens */
+    padding-top: 10px; /* Adjust padding for smaller screens */
 height:400px;
    
   }
