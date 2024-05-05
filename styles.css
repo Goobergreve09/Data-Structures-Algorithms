@@ -74,4 +74,14 @@ border: 3px solid black;
   border: 3px solid white;
 }
 
+@media screen and (max-width: 450px) {
+  #imageContainer {
+    padding-top: 25px; /* Adjust padding for smaller screens */
+height:400px;
+   
+  }
+
+
+}
+
 
