@@ -85,7 +85,7 @@ const locations = [
   },
   {
     name: "fight",
-    text: "You are fighting a " ,
+    text: "You are fighting a ",
     "button text": ["Attack", "Dodge", "Run"],
     "button functions": [attack, dodge, goTown],
   },
@@ -158,9 +158,8 @@ function goFight() {
     case "dragon":
       fightImage.src = "assets/images/fightDragon.jpeg";
       break;
-    // Add more cases for other monsters as needed
+
     default:
-      // Set a default image or clear the image if no specific image is available
       fightImage.src = "";
   }
 }
@@ -202,7 +201,7 @@ function fightSlime() {
   fighting = 0;
   goFight();
 
-  text.innerText += " " + monsters[fighting].name + " monster." ;
+  text.innerText += " " + monsters[fighting].name + " monster.";
 }
 
 function fightBeast() {
@@ -216,7 +215,10 @@ function fightDragon() {
   fighting = 2;
   goFight();
 
-  text.innerText += " " + monsters[fighting].name + " that has been tormenting the town. The towns people anxiously await your arrival.";
+  text.innerText +=
+    " " +
+    monsters[fighting].name +
+    " that has been tormenting the town. The towns people anxiously await your arrival.";
 }
 
 function sellWeapon() {
@@ -234,12 +236,14 @@ function sellWeapon() {
 
 function attack() {
   text.innerText = "The " + monsters[fighting].name + " attacks.";
-  text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
+  text.innerText +=
+    " You attack it with your " + weapons[currentWeapon].name + ".";
 
   health -= getMonsterAttackValue(monsters[fighting].level);
 
   if (isMonsterHit()) {
-    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
+    monsterHealth -=
+      weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
   } else {
     text.innerText += " You miss.";
   }
@@ -250,10 +254,11 @@ function attack() {
   if (health <= 0) {
     lose();
   } else if (monsterHealth <= 0) {
-    if (fighting === 2) { // Check if fighting the dragon
-      winGame(); // Call winGame() if fighting the dragon and monsterHealth <= 0
+    if (fighting === 2) {
+      // Check if fighting the dragon
+      winGame();
     } else {
-      defeatMonster(); // Otherwise, call defeatMonster()
+      defeatMonster();
     }
   }
 
@@ -316,9 +321,8 @@ function update(location) {
       case "fanged beast":
         locationImage.src = "assets/images/deadBeast.jpeg";
         break;
-      // Add more cases for other monsters as needed
+
       default:
-        // Set a default image or clear the image if no specific image is available
         locationImage.src = "";
     }
   }
@@ -386,11 +390,10 @@ function pickEight() {
 }
 
 imagesArray = [
-  "assets\images\enterCave.jpeg",
-  "assets\images\fangedBeast.jpeg",
-  "assets\images\fightDragon.jpeg",
-  "assets\images\slimeMonster.jpeg",
-  "assets\images\Store.jpeg",
-  "assets\images\TownSquare.jpeg",
-
-]
+  "assetsimagesenterCave.jpeg",
+  "assetsimages\fangedBeast.jpeg",
+  "assetsimages\fightDragon.jpeg",
+  "assetsimagesslimeMonster.jpeg",
+  "assetsimagesStore.jpeg",
+  "assetsimagesTownSquare.jpeg",
+];
