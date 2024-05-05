@@ -25,11 +25,12 @@ In order to play this game and give it a shot click the "Play Game" link below. 
 
 
 
-[Play Game](https://goobergreve09.github.io/Data-Structures-Algorithms/)
+[Play Game](https://dragonrepel.netlify.app/)
 
 ## Contributions
 
 [Free Code Camp](freecodecamp.org)
+[Netlify Server](https://www.netlify.com/everything-you-need-to-know-about-the-netlify-platform/)
 
 
 ## License
